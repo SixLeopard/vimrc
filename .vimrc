@@ -66,7 +66,7 @@ set number                      " Show line numbers
 set wildmenu                    " Turn on the autocomplete menu                 
 set mouse=a                     " Enable mouse support                         
 set ruler                       " Display the ruler in the bottom right corner  
-set cursorline                  " Highlight the current line                    
+"set cursorline                  " Highlight the current line                    
 set backspace=indent,eol,start  " Allow backspace to work across lines
 
 "--------------------------------------------------------------------           
