@@ -25,6 +25,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'ycm-core/YouCompleteMe' "has a lot of dependencies may need to be removed for some installations
 Plug 'voldikss/vim-floaterm'
+Plug 'vim-airline/vim-airline-themes'
 
 "Initialize plugin system
 " - Automatically executes `filetype plugin indent on` and `syntax enable`.
@@ -66,12 +67,23 @@ set number                      " Show line numbers
 set wildmenu                    " Turn on the autocomplete menu                 
 set mouse=a                     " Enable mouse support                         
 set ruler                       " Display the ruler in the bottom right corner  
-"set cursorline                  " Highlight the current line                    
+set cursorline                  " Highlight the current line                    
 set backspace=indent,eol,start  " Allow backspace to work across lines
+"--------------------------------------------------------------------           
+"  Airline (bottom line) config 
+"-------------------------------------------------------------------- 
+let g:airline_theme='violet' "Requires Powline fonts to be installed to display correctly
+let g:airline_powerline_fonts = 1 "requires powerline fonts to be installed
 
 "--------------------------------------------------------------------           
 "   Nerd Tree config (:NERDTree to open)                                                               
 "--------------------------------------------------------------------
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 autocmd VimEnter * NERDTree | wincmd p
+autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif
+
+"--------------------------------------------------------------------           
+"   ShortCuts                                                               
+"--------------------------------------------------------------------
+nnoremap <S-F> :Files %:p:h <cr> 
+let g:floaterm_keymap_toggle    = '<F5>'
